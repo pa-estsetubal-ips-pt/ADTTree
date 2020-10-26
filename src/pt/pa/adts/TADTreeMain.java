@@ -18,16 +18,19 @@ public class TADTreeMain {
 * @param args the command line arguments
      */
     public static void main(String[] args) {
-        LinkedTree<String> myTree = new LinkedTree("Animal");
+        TreeLinked<String> myTree = new TreeLinked("Animal");
         Position<String> root = myTree.root();
         Position<String> posMamifero = myTree.insert(root, "Mamifero");
         Position<String> posAve = myTree.insert(root, "Ave");
-        myTree.insert(posMamifero, "Cao");
+        Position<String> posCao= myTree.insert(posMamifero, "Cao");
+
         Position<String> posGato = myTree.insert(posMamifero, "Gato");
         myTree.insert(posMamifero, "Vaca");
         myTree.insert(posAve, "Papagaio");
         Position<String> posAguia = myTree.insert(posAve, "Aguia");
-        myTree.insert(posAguia, "Aguia Real");
+        myTree.insert(posAguia, "Aguia_Real");
+        myTree.insert(posCao, "Caniche");
+
         System.out.println("TREE " + myTree);
 
         System.out.println("Elements: ");
@@ -48,5 +51,16 @@ public class TADTreeMain {
 
         System.out.println("ToString");
         System.out.println(myTree);
+
+
+        System.out.println(myTree.printByLevels());
+
+        myTree.remove(root);
+        root = myTree.insert(null,"Animal");
+        posMamifero = myTree.insert(root, "Mamifero");
+        posAve = myTree.insert(root, "Ave");
+        System.out.println("ToString");
+        System.out.println(myTree);
+
     }
 }

@@ -1,6 +1,8 @@
 package pt.pa.adts;
 
 
+import java.util.Collection;
+
 /**
  * A tree is made up of a root that is a tree node that can have an arbitrary number of children. Each children is a root tree node too.
  *
@@ -126,5 +128,24 @@ public interface Tree<E> {
    * @return the height of the tree ( -1  if is empty, 0 if has just the root) that is equal to the higher level of the tree
    */
   public int height();
+
+  /**
+   *
+   * @param position of the treeNode
+   * @return  return the level of the treeNode
+   * @throws InvalidPositionException if the position is invalid (null, or not belongs to the tree)
+   */
+  public int level(Position<E> position)throws InvalidPositionException;
+
+  /**
+   * a Collection of the positions of the tree that belongs to a specific level.
+   * @param level - of the tree
+   * @return a Collection of the positions of the tree that belongs to the level, returns an empty collection if level less than 1 or greater thar heiht
+   *
+   */
+  public Collection<Position<E>> inLevel(int level);
+
+  public String printByLevels();
+
 }
 
