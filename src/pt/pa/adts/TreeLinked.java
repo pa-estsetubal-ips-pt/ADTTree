@@ -216,7 +216,6 @@ public class TreeLinked<E> implements Tree<E> {
         for (Position<E> w : children(position)) {
             elements(w, lista);
         }
-
     }
 
     @Override
@@ -243,62 +242,18 @@ public class TreeLinked<E> implements Tree<E> {
             return 1;
         }
         int maximo = 0;
-       for (TreeNode child : treeNode.children) {
+        for (TreeNode child : treeNode.children) {
             int h = height(child);
             if (maximo < h) {
                 maximo = h;
             }
         }
         return 1 + maximo;
-
     }
 
     public int height() {
-        int h = 0;
-        if (!isEmpty()) {
-            h = height(root);
-        }
-        return h;
-    }
-
-    @Override
-    public int level(Position<E> position) throws InvalidPositionException {
-        return 0;
-    }
-
-    @Override
-    public Collection<Position<E>> inLevel(int level) {
-        return null;
-    }
-
-    @Override
-    public String printByLevels() {
-        Queue<TreeNode> queue = new LinkedList();
-        queue.offer(root);
-        String str="printBy Levels \n ";
-        int count=1;
-        int countNext=0;
-        while(!queue.isEmpty())
-        {
-            TreeNode node= queue.poll();
-            count--;
-            str+= node.element.toString();
-
-            for(TreeNode child: node.children){
-                countNext++;
-                queue.offer(child);
-            }
-            if( count==0)
-            {
-                str+="\n";
-                count=countNext;
-                countNext=0;
-            }
-            else
-                str+="--";
-
-        }
-       return str;
+        if (isEmpty()) return -1;
+        return height(root)-1;
     }
 
     private String toStringPreOrder(Position<E> position) {
@@ -359,13 +314,39 @@ public class TreeLinked<E> implements Tree<E> {
             this.children = new ArrayList<>();
         }
 
+        public int X() {
+            return this.children.size();
+        }
+
         public E element() {
             if (element == null) {
                 throw new InvalidPositionException();
             }
             return element;
         }
-
     }
+    /** miniteste 1
+    //grau;
+
+        public int X1(){
+            return this.children.size();
+        }
+        // numero de irmãos
+        public int X2(){
+            if (this.parent==null) return 0;
+            return this.parent.children.size()-1;
+        }
+        //numero de nos filhos do tipo folha
+        public int X3(){
+             int count=0;
+             for(TreeNode node: this.children)
+                 if (!children.isEmpty()) count++;
+             return count;
+        }
+
+
+
+
+    **/
 
 }

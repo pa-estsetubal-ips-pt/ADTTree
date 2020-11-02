@@ -19,9 +19,11 @@ public class TADTreeMain {
      */
     public static void main(String[] args) {
         TreeLinked<String> myTree = new TreeLinked("Animal");
+        System.out.println(" height 1 " + myTree.height());
         Position<String> root = myTree.root();
         Position<String> posMamifero = myTree.insert(root, "Mamifero");
         Position<String> posAve = myTree.insert(root, "Ave");
+        System.out.println(" height 2 " + myTree.height());
         Position<String> posCao= myTree.insert(posMamifero, "Cao");
 
         Position<String> posGato = myTree.insert(posMamifero, "Gato");
@@ -52,10 +54,8 @@ public class TADTreeMain {
         System.out.println("ToString");
         System.out.println(myTree);
 
-
-        System.out.println(myTree.printByLevels());
-
         myTree.remove(root);
+        System.out.println(" height 4 " + myTree.height());
         root = myTree.insert(null,"Animal");
         posMamifero = myTree.insert(root, "Mamifero");
         posAve = myTree.insert(root, "Ave");
